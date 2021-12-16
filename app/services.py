@@ -1,5 +1,5 @@
 import app.database as database
-import app.schemas as _models
+import app.models as _models
 
 
 def _add_tables():

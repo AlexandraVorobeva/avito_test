@@ -14,7 +14,7 @@ services:
 
   db:
     image: "postgres"
-    container_name: "some-postgres"
+    container_name: "my_postgres"
     environment:
       POSTGRES_PASSWORD: "mysecretpassword"
     ports:

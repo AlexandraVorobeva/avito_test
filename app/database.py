@@ -2,7 +2,7 @@ import sqlalchemy as _sql
 import sqlalchemy.ext.declarative as _declarative
 import sqlalchemy.orm as _orm
 
-DATABASE_URL = "postgresql://postgres:mysecretpassword@localhost:54320/fastapi_db"
+DATABASE_URL = "postgresql://postgres:mysecretpassword@localhost:54320/my_dbdata"
 
 engine = _sql.create_engine(DATABASE_URL)
 
