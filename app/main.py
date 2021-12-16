@@ -1,9 +1,8 @@
-from fastapi import FastAPI
+import uvicorn
+from fastapi import FastAPI, APIRouter
+from routs import router
 
-app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+app = FastAPI(title="Account", description="by Aexandra Vorobeva")
+app.include_router(router)
 
