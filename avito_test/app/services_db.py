@@ -1,5 +1,5 @@
-from avito_test import app as database
+from .database import Base, engine
 
 
 def _add_tables():
-    return database.Base.metadata.create_all(bind=database.engine)
+    return Base.metadata.create_all(bind=engine)

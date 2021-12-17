@@ -1,8 +1,8 @@
 import sqlalchemy as sql
-from avito_test import app as database
+from .database import Base
 
 
-class Client(database.Base):
+class Client(Base):
     __tablename__ = "clients"
 
     id = sql.Column(sql.Integer, primary_key=True, index=True)
@@ -11,7 +11,7 @@ class Client(database.Base):
     balance = sql.Column(sql.Float, index=True)
 
 
-class Operation(database.Base):
+class Operation(Base):
     __tablename__ = 'operations'
 
     id = sql.Column(sql.Integer, primary_key=True)
