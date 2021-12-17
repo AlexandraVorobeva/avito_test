@@ -1,5 +1,5 @@
 import sqlalchemy as sql
-import app.database as database
+from avito_test import app as database
 
 
 class Client(database.Base):

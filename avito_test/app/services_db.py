@@ -1,5 +1,4 @@
-import app.database as database
-import app.models as _models
+from avito_test import app as database
 
 
 def _add_tables():
