@@ -10,12 +10,12 @@ class ClientBase(BaseModel):
 
 class Client(ClientBase):
     id: int
-    balance: Decimal
+    balance: float
 
     class Config:
         orm_mode = True
 
 
 class ClientCreate(ClientBase):
-    balance: Decimal = 0
+    balance: float = 0.0
     pass

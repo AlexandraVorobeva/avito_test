@@ -2,7 +2,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from ..database import get_session
-from ..models import Operation
+from ..models import Operation, Client
 from ..schemas.operation import OperationKind, OperationCreate
 
 
@@ -30,6 +30,12 @@ class OperationsService:
 
     def create(self, operation_data: OperationCreate) -> Operation:
         operation = Operation(**operation_data.dict())
+        client = (
+            self.session.query(Client)
+            .filter(Client.id == operation_data.user_id)
+            .first()
+        )
+        client.balance += operation_data.amount
         self.session.add(operation)
         self.session.commit()
         return operation

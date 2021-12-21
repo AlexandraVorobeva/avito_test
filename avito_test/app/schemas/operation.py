@@ -1,6 +1,5 @@
 from datetime import date
 from typing import Optional
-from decimal import Decimal
 from enum import Enum
 from pydantic import BaseModel
 
@@ -14,7 +13,7 @@ class OperationBase(BaseModel):
     user_id: int
     date: date
     kind: OperationKind
-    amount: Decimal
+    amount: float
     description: Optional[str]
 
 

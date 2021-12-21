@@ -8,7 +8,6 @@ from ..models import Client
 from ..services.clients import ClientService
 
 
-
 router = APIRouter(prefix='/clients', tags=['clients'],)
 
 
