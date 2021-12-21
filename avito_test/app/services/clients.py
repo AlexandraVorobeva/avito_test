@@ -2,7 +2,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from ..database import get_session
-from ..models import Client
+from ..models import Client, Operation
 from ..schemas.clients import ClientCreate
 
 
@@ -31,3 +31,11 @@ class ClientService:
         client = self.get(client_id)
         self.session.delete(client)
         self.session.commit()
+
+    def get_operations_for_user(self, client_id: int):
+        query = self.session.query(Operation)
+        if client_id:
+            query = query.filter(Operation.user_id == client_id)
+        operations = query.all()
+        return operations
+

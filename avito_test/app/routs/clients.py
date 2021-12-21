@@ -34,3 +34,11 @@ def delete_operation(
 ):
     service.delete(client_id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.get('/all_operations/{client_id}', response_model=list)
+def get_operations_for_client(
+        client_id: int,
+        services: ClientService = Depends()
+):
+    return services.get_operations_for_user(client_id)

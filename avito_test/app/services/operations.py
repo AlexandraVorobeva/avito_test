@@ -21,6 +21,7 @@ class OperationsService:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         return operation
 
+
     def get_many(self, kind: Optional[OperationKind] = None):
         query = self.session.query(Operation)
         if kind:
