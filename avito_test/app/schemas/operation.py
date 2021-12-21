@@ -11,6 +11,7 @@ class OperationKind(str, Enum):
 
 
 class OperationBase(BaseModel):
+    user_id: int
     date: date
     kind: OperationKind
     amount: Decimal
@@ -27,6 +28,3 @@ class Operation(OperationBase):
 class OperationCreate(OperationBase):
     pass
 
-
-class OperationUpdate(OperationBase):
-    pass
