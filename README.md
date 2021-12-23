@@ -1,5 +1,5 @@
 # avito_test
-REST API application ...<br>
+REST API application: microservice for working with user balance (crediting funds, debiting funds, transferring funds from client to client, method for obtaining user balance). The service accepts and sends requests / responses in JSON format.<br>
 
 
 ### Stack of technologies:<br>
