@@ -1,19 +1,22 @@
 # avito_test
 REST API application ...<br>
 
-### Basic functionality:<br>
-1.Web REST API<br>
-2. ...<br>
-3. ...<br>
-4. Sent money from one client to another<br>
-
 
 ### Stack of technologies:<br>
 -Python <br>
 -FastApi<br>
 -Docker <br>
 -Database: Postgres <br>
--linter: Black<br>
+-Linter: Black<br>
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python. The key features are: fast to code, based on the open standards for APIs, very high performance, minimize code duplication.
+
+### Basic functionality:<br>
+1. Web REST API<br>
+2. Getting list of all clients and all operations from the database<br>
+3. Creating new clients and all operations<br>
+4. Getting information about any client aor any operation by id <br>
+5. Sending money from one client to another<br>
 
 
 ### APIs endpoints:<br>
