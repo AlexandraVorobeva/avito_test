@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from fastapi import APIRouter, Depends, Response, status
 from sqlalchemy.orm import Session
 from ..schemas.clients import ClientCreate
@@ -16,6 +16,7 @@ def get_client(
         client_id: int,
         services: ClientService = Depends()
 ):
+    """GET information about a client by id."""
     return services.get(client_id)
 
 
@@ -24,6 +25,7 @@ def create_client(
         client_data: ClientCreate,
         service: ClientService = Depends(),
 ):
+    """POST (create) new client."""
     return service.create(client_data=client_data)
 
 
@@ -32,13 +34,15 @@ def delete_operation(
     client_id: int,
     service: ClientService = Depends(),
 ):
+    """DELETE any client by id."""
     service.delete(client_id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router.get('/all_operations/{client_id}', response_model=list)
+@router.get('/all_operations/{client_id}', response_model=List[model_Client])
 def get_operations_for_client(
         client_id: int,
         services: ClientService = Depends()
 ):
+    """GET information about all operations for one user by user id."""
     return services.get_operations_for_user(client_id)
