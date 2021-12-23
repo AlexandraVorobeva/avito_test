@@ -48,7 +48,7 @@ http://127.0.0.1:8000/docs <br>
 
 ### Examples:<br>
 
-![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/main/img_for_readme/1.png) <br>
-![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/main/img_for_readme/2.png) <br>
-![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/main/img_for_readme/3.png) <br>
-![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/main/img_for_readme/4.png)<br><br>
+![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/master/img_for_readme/1.png) <br>
+![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/master/img_for_readme/2.png) <br>
+![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/master/img_for_readme/3.png) <br>
+![Screenshot](https://github.com/SparklingAcidity/avito_test/blob/master/img_for_readme/4.png)<br><br>
