@@ -21,7 +21,6 @@ class OperationsService:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         return operation
 
-
     def get_many(self, kind: Optional[OperationKind] = None):
         query = self.session.query(Operation)
         if kind:
@@ -36,7 +35,13 @@ class OperationsService:
             .filter(Client.id == operation_data.user_id)
             .first()
         )
-        client.balance += operation_data.amount
+        if operation_data.kind == 'income':
+            client.balance += operation_data.amount
+        if operation_data.kind == 'outcome':
+            if client.balance >= operation_data.amount:
+                client.balance -= operation_data.amount
+            else:
+                raise HTTPException(status_code=400, detail="Not enough funds to pay")
         self.session.add(operation)
         self.session.commit()
         return operation
@@ -45,3 +50,30 @@ class OperationsService:
         operation = self.get(operation_id)
         self.session.delete(operation)
         self.session.commit()
+
+    def send_money(self, user_id_from, user_id_to, data, amount, description):
+        operation_data1 = {
+            "user_id": user_id_from,
+            "date": data,
+            "kind": "outcome",
+            "amount": amount,
+            "description": description
+        }
+        operation_data_create1 = OperationCreate(**operation_data1)
+        operation_data2 = {
+            "user_id": user_id_to,
+            "date": data,
+            "kind": "income",
+            "amount": amount,
+            "description": description
+        }
+        operation_data_create2 = OperationCreate(**operation_data2)
+        operation1 = self.create(operation_data_create1)
+        operation2 = self.create(operation_data_create2)
+        return {
+            "user_id_from": user_id_from,
+            "user_id_to": user_id_to,
+            "date": data,
+            "amount": amount,
+            "description": description
+        }

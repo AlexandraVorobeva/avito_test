@@ -42,3 +42,15 @@ def delete_operation(
 ):
     service.delete(operation_id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.post('/send_money/{user_id_from}/{user_id_to}')
+def send_money_from_client_to_client(
+        user_id_from,
+        user_id_to,
+        data,
+        amount,
+        description,
+        service: OperationsService = Depends(),
+):
+    return service.send_money(user_id_from, user_id_to, data, amount, description)
