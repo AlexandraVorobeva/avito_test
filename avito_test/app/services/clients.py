@@ -1,9 +1,9 @@
-from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from ..database import get_session
 from ..models import Client, Operation
 from ..schemas.clients import ClientCreate
+from ..services.currency import USD, EUR, CNY
 
 
 class ClientService:
@@ -44,3 +44,20 @@ class ClientService:
         operations = query.all()
         return operations
 
+    def get_operations_sort_by_days(self, client_id, day):
+        """Get information about all operations for one user per day."""
+        query = self.session.query(Operation)
+        operations = query.filter(Operation.user_id == client_id,
+                                  Operation.date == day).all()
+        return operations
+
+    def get_clients_balance_currency(self, client_id, currency):
+        """Get client's balance from database and convert it from RUB to USD, EUR or CNY"""
+        client = self.get(client_id)
+        if currency == 'USD':
+            client.balance = round(client.balance / USD, 2)
+        if currency == 'EUR':
+            client.balance = round(client.balance / EUR, 2)
+        if currency == 'CNY':
+            client.balance = round(client.balance / CNY, 2)
+        return client
