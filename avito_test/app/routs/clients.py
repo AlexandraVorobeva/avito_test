@@ -19,15 +19,6 @@ def get_all_info_about_client(
     return services.get(client_id)
 
 
-@router.get('/{client_id}/{currency}', response_model=model_Client)
-def get_clients_balance(
-        client_id: int,
-        currency: CurrencyKind,
-        services: ClientService = Depends()
-):
-    """GET client's balance in different currencies."""
-    return services.get_clients_balance_currency(client_id, currency)
-
 
 @router.post('/', response_model=model_Client)
 def create_client(
@@ -48,7 +39,7 @@ def delete_client(
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router.get('/all_operations/{client_id}', response_model=List[model_Operation])
+@router.get('/all_operations/{client_id}')
 def get_operations_for_client(
         client_id: int,
         services: ClientService = Depends()
@@ -57,11 +48,21 @@ def get_operations_for_client(
     return services.get_operations_for_user(client_id)
 
 
-@router.get('/operations_by_days/{client_id}/{day}', response_model=List[model_Operation])
-def get_operations_for_day(
+@router.get('/operations_per_day/{client_id}/{day}', response_model=List[model_Operation])
+def get_operations_per_day(
         client_id: int,
         day,
         services: ClientService = Depends()
 ):
     """GET information about all operations for one user per day."""
     return services.get_operations_sort_by_days(client_id, day)
+
+
+@router.get('/{client_id}/{currency}', response_model=model_Client)
+def get_clients_balance(
+        client_id: int,
+        currency: CurrencyKind,
+        services: ClientService = Depends()
+):
+    """GET client's balance in different currencies."""
+    return services.get_clients_balance_currency(client_id, currency)
