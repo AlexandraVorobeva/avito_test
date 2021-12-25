@@ -51,7 +51,7 @@ $ source venv/bin/activate<br>
 $ docker-compose up -d --build<br>
 
 ### Tests: <br>
-$pytest
+$ docker-compose exec app pytest .
 
 
 ### API from the browser:
