@@ -3,7 +3,7 @@ import lxml
 from bs4 import BeautifulSoup
 
 
-def get_currency(currency_id):
+def get_currency(currency_id: str):
     """Fetch exchange rate for ruble."""
     page = requests.get('http://www.cbr.ru/scripts/XML_daily.asp')
     src = page.text

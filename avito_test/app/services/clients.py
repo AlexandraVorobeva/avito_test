@@ -44,14 +44,14 @@ class ClientService:
         operations = query.all()
         return operations
 
-    def get_operations_sort_by_days(self, client_id, day):
+    def get_operations_sort_by_days(self, client_id: int, day):
         """Get information about all operations for one user per day."""
         query = self.session.query(Operation)
         operations = query.filter(Operation.user_id == client_id,
                                   Operation.date == day).all()
         return operations
 
-    def get_clients_balance_currency(self, client_id, currency):
+    def get_clients_balance_currency(self, client_id: int, currency: str):
         """Get client's balance from database and convert it from RUB to USD, EUR or CNY"""
         client = self.get(client_id)
         if currency == 'USD':
