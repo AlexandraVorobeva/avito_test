@@ -15,8 +15,9 @@ FastAPI is a modern, fast (high-performance), web framework for building APIs wi
 1. Web REST API<br>
 2. Getting list of all clients and all operations from the database<br>
 3. Creating new clients and all operations<br>
-4. Getting information about any client aor any operation by id <br>
+4. Getting information about any client or any operation by id <br>
 5. Sending money from one client to another<br>
+6. Getting client's balance in different currencies
 
 
 ### APIs endpoints:<br>
@@ -24,6 +25,8 @@ FastAPI is a modern, fast (high-performance), web framework for building APIs wi
 | ------- | --- | --- |
 | GET | /clients/{client_id} |  information about a client |
 | GET | /clients/all_operations/{client_id} | information about all operations for one client |
+| GET | /clients/{client_id}/{currency} |  client's balance in different currencies |
+| GET | /clients/{client_id}/{day} |  information about all operations for one user per day |
 | POST | /clients | create new client |
 | DELETE | /clients/{client_id} | delete a client |
 | ------- | --- | --- |
