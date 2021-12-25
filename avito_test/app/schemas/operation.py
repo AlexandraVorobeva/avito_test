@@ -5,8 +5,8 @@ from pydantic import BaseModel
 
 
 class OperationKind(str, Enum):
-    INCOME = 'income'
-    OUTCOME = 'outcome'
+    INCOME = "income"
+    OUTCOME = "outcome"
 
 
 class OperationBase(BaseModel):
@@ -26,4 +26,3 @@ class Operation(OperationBase):
 
 class OperationCreate(OperationBase):
     pass
-

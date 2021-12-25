@@ -9,15 +9,13 @@ from ..schemas.operation import OperationKind, OperationCreate
 
 class OperationsService:
     """Class for working with operations."""
+
     def __init__(self, session: Session = Depends(get_session)):
         self.session = session
 
     def get(self, operation_id: int):
         operation = (
-            self.session
-                .query(Operation)
-                .filter(Operation.id == operation_id)
-                .first()
+            self.session.query(Operation).filter(Operation.id == operation_id).first()
         )
         if not operation:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
@@ -38,9 +36,9 @@ class OperationsService:
             .filter(Client.id == operation_data.user_id)
             .first()
         )
-        if operation_data.kind == 'income':
+        if operation_data.kind == "income":
             client.balance += operation_data.amount
-        if operation_data.kind == 'outcome':
+        if operation_data.kind == "outcome":
             if client.balance >= operation_data.amount:
                 client.balance -= operation_data.amount
             else:
@@ -55,14 +53,21 @@ class OperationsService:
         self.session.delete(operation)
         self.session.commit()
 
-    def send_money(self, user_id_from: int, user_id_to: int, data: date, amount: int, description: str):
+    def send_money(
+        self,
+        user_id_from: int,
+        user_id_to: int,
+        data: date,
+        amount: int,
+        description: str,
+    ):
         """Create two operations for sending money from one client to another."""
         operation_data1 = {
             "user_id": user_id_from,
             "date": data,
             "kind": "outcome",
             "amount": amount,
-            "description": description
+            "description": description,
         }
         operation_data_create1 = OperationCreate(**operation_data1)
         operation_data2 = {
@@ -70,7 +75,7 @@ class OperationsService:
             "date": data,
             "kind": "income",
             "amount": amount,
-            "description": description
+            "description": description,
         }
         operation_data_create2 = OperationCreate(**operation_data2)
         operation1 = self.create(operation_data_create1)
@@ -80,5 +85,5 @@ class OperationsService:
             "user_id_to": user_id_to,
             "date": data,
             "amount": amount,
-            "description": description
+            "description": description,
         }

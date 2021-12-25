@@ -7,7 +7,6 @@ class ClientBase(BaseModel):
     last_name: str
 
 
-
 class Client(ClientBase):
     id: int
     balance: float

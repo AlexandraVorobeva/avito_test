@@ -36,4 +36,3 @@ def test_get_operations_for_client():
 def test_get_operations_per_day():
     response = client.get("/clients/operations_per_day/1/2021-12-23/")
     assert response.status_code == 200
-

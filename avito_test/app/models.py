@@ -12,10 +12,10 @@ class Client(Base):
 
 
 class Operation(Base):
-    __tablename__ = 'operations'
+    __tablename__ = "operations"
 
     id = sql.Column(sql.Integer, primary_key=True)
-    user_id = sql.Column(sql.Integer, sql.ForeignKey('clients.id'))
+    user_id = sql.Column(sql.Integer, sql.ForeignKey("clients.id"))
     date = sql.Column(sql.Date)
     kind = sql.Column(sql.String)
     amount = sql.Column(sql.Numeric(10, 2))
