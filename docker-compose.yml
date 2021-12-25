@@ -5,11 +5,11 @@ services:
     build:
       context: ./avito_test
       dockerfile: Dockerfile
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8005 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
       - ./avito_test/:/avito_test/
     ports:
-      - 8005:8005
+      - 8000:8000
     env_file:
       - avito_test/.env.dev
     restart: always
