@@ -19,13 +19,13 @@ def test_get_client():
     assert response.status_code == 200
 
 
-# def test_post_client():
-#     response = client.post("/clients/", json={
-#         "first_name": "Sasha",
-#         "last_name": "Vorobeva",
-#         "balance": 0
-#     })
-#     assert response.status_code == 200
+def test_post_client():
+    response = client.post("/clients/", json={
+        "first_name": "Sasha",
+        "last_name": "Vorobeva",
+        "balance": 0
+    })
+    assert response.status_code == 200
 
 
 def test_get_operations_for_client():
