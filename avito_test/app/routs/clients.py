@@ -48,7 +48,7 @@ def get_operations_for_client(client_id: int, services: ClientService = Depends(
     "/operations_per_day/{client_id}/{day}", response_model=List[model_Operation]
 )
 def get_operations_per_day(client_id: int, day, services: ClientService = Depends()):
-    """GET information about all operations for one user per day."""
+    """GET information about all operations for one user per day. Day format: 2021-12-23."""
     return services.get_operations_sort_by_days(client_id, day)
 
 
