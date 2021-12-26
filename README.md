@@ -43,10 +43,6 @@ FastAPI is a modern, fast (high-performance), web framework for building APIs wi
 $ git clone https://github.com/SparklingAcidity/avito_test <br>
 $ cd avito_test <br>
 
-### Create virtualenv:<br>
-$ virtualenv venv<br>
-$ source venv/bin/activate<br>
-
 ### Docker run:
 $ docker-compose up -d --build<br>
 
